@@ -72,8 +72,6 @@ This project was brought to life by the dedicated developers at **Dr. Brinjal Te
 
 ---
 
----
-
 ## 🧠 AI Model Setup (Manual)
 
 Due to GitHub's file size limitations, the trained `.h5` model files must be downloaded separately and placed in your project root:
@@ -89,6 +87,4 @@ Due to GitHub's file size limitations, the trained `.h5` model files must be dow
 
 ---
 
-
----
 *© 2026 Dr. Brinjal Tech Labs. All Rights Reserved.*
