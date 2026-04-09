@@ -129,7 +129,7 @@ export default function App() {
   const [stats, setStats] = useState({ diseaseCount: 18, aiEngine: 'Hybrid' });
 
   useEffect(() => {
-    fetch('http://localhost:8000/get_stats')
+    fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/get_stats')
       .then(res => res.json())
       .then(data => setStats({ 
         diseaseCount: data.disease_count || 18, 
@@ -191,7 +191,7 @@ export default function App() {
       formData.append('model_choice', selectedModel);
 
       // Trigger POST request to the local FastAPI backend
-      const response = await fetch('http://127.0.0.1:8000/predict', {
+      const response = await fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/predict', {
         method: 'POST',
         body: formData,
       });
@@ -233,7 +233,7 @@ export default function App() {
       setAppState('results');
     } catch (error) {
       console.error("Critical Backend Error:", error);
-      alert(`❌ Diagnostic Engine Error: ${error.message}\n\nPlease ensure the FastAPI server is running on http://127.0.0.1:8000`);
+      alert(`❌ Diagnostic Engine Error: ${error.message}\n\nPlease ensure the Backend Space is running on Hugging Face.`);
       setAppState('idle');
     }
   };
