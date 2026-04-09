@@ -71,4 +71,24 @@ This project was brought to life by the dedicated developers at **Dr. Brinjal Te
 3. `npm run dev`
 
 ---
+
+---
+
+## 🧠 AI Model Setup (Manual)
+
+Due to GitHub's file size limitations, the trained `.h5` model files must be downloaded separately and placed in your project root:
+
+*   **DenseNet PRO** (v2.1.2)
+    [🚀 Download Model Engine](https://drive.google.com/uc?export=download&id=15mNPda96HLXcEzx_ThLJyKA2EAIueezn)
+
+*   **MobileNetV2** (v1.0.4)
+    [🚀 Download Model Engine](https://drive.google.com/uc?export=download&id=1KodMXyyE1ktToZwsSFH3SCqWzX4XHLD5)
+
+*   **ResNet50** (v1.2.0)
+    [🚀 Download Model Engine](https://drive.google.com/uc?export=download&id=1s9aabRnT2kQ1Xzbu_cPyjMFLM-c6mC3a)
+
+---
+
+
+---
 *© 2026 Dr. Brinjal Tech Labs. All Rights Reserved.*
