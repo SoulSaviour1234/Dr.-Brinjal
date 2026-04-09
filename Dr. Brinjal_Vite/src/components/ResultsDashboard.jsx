@@ -36,7 +36,7 @@ export default function ResultsDashboard({ data, onReset }) {
         formData.append('file', data.rawFile);
       }
 
-      const response = await fetch('http://localhost:8000/get_technical_report', {
+      const response = await fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/get_technical_report', {
         method: 'POST',
         body: formData,
       });
