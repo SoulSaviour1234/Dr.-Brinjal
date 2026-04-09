@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&family=Share+Tech+Mono&family=Zen+Dots&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Outfit", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-tech: "Zen Dots", cursive;
+  --font-agri: "Outfit", sans-serif;
+  
+  --color-primary: oklch(0.6 0.25 300);
+  --color-secondary: oklch(0.8 0.2 140);
+  --color-accent: oklch(0.7 0.3 320);
+  --color-midnight: oklch(0.1 0.05 300);
+  --color-glass: rgba(20, 15, 30, 0.45);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+
+  --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.3);
+
+  @keyframes scan {
+    0%, 100% { transform: translateY(-190px); opacity: 0.1; }
+    50% { transform: translateY(190px); opacity: 0.9; }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes reverse-spin {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+  --animate-scan: scan 3s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 12s linear infinite;
+  --animate-reverse-spin: reverse-spin 6s linear infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-midnight text-slate-100 antialiased selection:bg-primary/30 min-h-screen overflow-x-hidden font-sans;
+    background-image: 
+      radial-gradient(circle at 10% 20%, oklch(0.2 0.1 300 / 0.4), transparent 40%),
+      radial-gradient(circle at 90% 80%, oklch(0.2 0.08 140 / 0.15), transparent 40%),
+      url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); /* Subtle noise/texture */
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-glass backdrop-blur-3xl border border-glass-border rounded-[2.5rem] shadow-premium transition-all duration-700;
+  }
+
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-primary to-primary/40;
+  }
+
+  .text-gradient-agri {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-emerald-500 to-green-800;
+  }
+
+  .text-gradient-dr-brinjal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-emerald-500 to-purple-600;
+  }
+
+  .text-gradient-purple-green {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-purple-400 to-emerald-500;
+  }
+
+  @keyframes wave-h {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-wave-h {
+    animation: wave-h 10s linear infinite;
+  }
+
+  .animate-wave-h-slow {
+    animation: wave-h 15s linear infinite reverse;
+  }
+
+  .animate-wave {
+    animation: wave 10s linear infinite;
+  }
+
+  .animate-wave-slow {
+    animation: wave 15s linear infinite;
+  }
+
+  @keyframes bubble {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
+
+  .animate-bubble {
+    animation: bubble 4s linear infinite;
+  }
+
+  .skeleton-pulse {
+    @apply relative overflow-hidden bg-white/5;
+  }
+
+  /* Custom Animations */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 10px oklch(0.6 0.25 300 / 0.4)); }
+    50% { filter: drop-shadow(0 0 25px oklch(0.6 0.25 300 / 0.8)); }
+  }
+
+  @keyframes logo-pulse {
+     0%, 100% { opacity: 0.15; transform: scale(1) translate(-50%, -50%); }
+     50% { opacity: 0.3; transform: scale(1.2) translate(-50%, -50%); }
+  }
+
+  .logo-pulse-bg {
+     @apply absolute top-1/2 left-1/2 w-full h-full bg-primary/20 blur-[60px] rounded-full -z-10 pointer-events-none;
+     animation: logo-pulse 4s infinite ease-in-out;
+  }
+  @keyframes pill-radiation {
+    0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.5); }
+    100% { box-shadow: 0 0 0 20px rgba(168, 85, 247, 0); }
+  }
+
+  .animate-pill-radiation {
+    animation: pill-radiation 3s infinite cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .animate-blink {
+    animation: blink 2s infinite ease-in-out;
+  }
+
+  @keyframes orbit {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(30vw, 20vh); }
+    66% { transform: translate(-10vw, 40vh); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes orbit-slow {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(-20vw, 40vh); }
+    66% { transform: translate(40vw, 20vh); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .animate-orbit {
+    animation: orbit 25s infinite ease-in-out;
+  }
+
+  .animate-orbit-slow {
+    animation: orbit-slow 40s infinite ease-in-out;
+  }
+}
+
+.depth-1 { transform: translateZ(20px); }
+.depth-2 { transform: translateZ(40px); }
+.depth-3 { transform: translateZ(60px); }
