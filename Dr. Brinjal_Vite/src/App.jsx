@@ -225,6 +225,8 @@ export default function App() {
         // Mapping dynamic data from Gemini AI
         symptoms: result.symptoms.length > 0 ? result.symptoms : ["Diagnostic signature detected"],
         clinical_action_plan: result.clinical_action_plan.length > 0 ? result.clinical_action_plan : ["Maintain proper hydration and nutrients."],
+        hydration: result.hydration || "Standard 45%",
+        photoperiod: result.photoperiod || "Standard 12h",
         predictions: result.predictions // Store all top 3 for dashboard
       };
 
