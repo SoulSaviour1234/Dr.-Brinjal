@@ -1,4 +1,5 @@
 import os
+import requests
 # Fix for Protobuf version conflict between Tensorflow and Gemini
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
@@ -48,9 +49,50 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 # Configuration
 IMG_SIZE = (224, 224)
 MODEL_PATHS = {
-    "resnet": "../brinjal_resnet50_model.keras",
-    "densenet": "../brinjal_densenet_model.keras"
+    "resnet": "../ResNet50_Brinjal_Engine_FINETUNED_Best.h5",
+    "densenet": "../DenseNet_PRO_Brinjal_Engine_Best.h5",
+    "mobilenet": "../MobileNetV2_Brinjal_Engine_FINETUNED_Best.h5"
 }
+
+# Google Drive Direct Download IDs
+MODEL_DOWNLOAD_LINKS = {
+    "../ResNet50_Brinjal_Engine_FINETUNED_Best.h5": "1s9aabRnT2kQ1Xzbu_cPyjMFLM-c6mC3a",
+    "../DenseNet_PRO_Brinjal_Engine_Best.h5": "15mNPda96HLXcEzx_ThLJyKA2EAIueezn",
+    "../MobileNetV2_Brinjal_Engine_FINETUNED_Best.h5": "1KodMXyyE1ktToZwsSFH3SCqWzX4XHLD5"
+}
+
+def ensure_model_exists(file_path: str):
+    """Checks if model exists, downloads from Google Drive if missing."""
+    if os.path.exists(file_path):
+        return True
+    
+    file_id = MODEL_DOWNLOAD_LINKS.get(file_path)
+    if not file_id:
+        print(f"No download link mapped for {file_path}")
+        return False
+
+    print(f"🧠 Model missing: {file_path}")
+    print(f"🚀 Started Auto-Download from Google Drive (ID: {file_id})...")
+    
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
+    
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status()
+        
+        # Ensure parent directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        
+        with open(file_path, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        
+        print(f"✅ Download Complete: {file_path}")
+        return True
+    except Exception as e:
+        print(f"❌ Download Failed for {file_path}: {e}")
+        return False
 
 CLASS_NAMES = [
     "Green", "Green_Healthy", "Green_Mosaic_Virus", 
@@ -142,8 +184,11 @@ def get_deep_audit(disease_name: str, image_bytes: bytes):
 def load_model(name: str):
     if name not in models:
         path = os.path.join(os.path.dirname(__file__), MODEL_PATHS[name])
-        if not os.path.exists(path):
-            raise HTTPException(status_code=500, detail=f"Model file not found: {path}")
+        
+        # Trigger Auto-Download if missing
+        if not ensure_model_exists(path):
+            raise HTTPException(status_code=500, detail=f"Model {name} could not be loaded or downloaded.")
+            
         print(f"Loading {name} model...")
         models[name] = tf.keras.models.load_model(path)
     return models[name]
