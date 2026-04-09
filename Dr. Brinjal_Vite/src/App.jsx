@@ -188,7 +188,7 @@ export default function App() {
       }
       
       // Send the model selected from the UI
-      formData.append('model_choice', selectedModel);
+      formData.append('model_type', selectedModel);
 
       // Trigger POST request to the local FastAPI backend
       const response = await fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/predict', {
