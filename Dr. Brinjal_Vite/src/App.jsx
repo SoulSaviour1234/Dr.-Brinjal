@@ -500,8 +500,8 @@ export default function App() {
       </nav>
 
       {/* 5. Copyright Attribution Footer */}
-      <footer className="fixed bottom-4 right-8 z-[100] hidden lg:block">
-        <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.4em] select-none transition-all duration-500 hover:text-white hover:scale-105 cursor-default hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] group">
+      <footer className="fixed bottom-1 md:bottom-4 w-full md:w-auto md:right-8 z-[100] flex justify-center md:block">
+        <p className="text-[7px] md:text-[9px] font-bold text-white/40 uppercase tracking-[0.3em] md:tracking-[0.4em] select-none transition-all duration-500 hover:text-white hover:scale-105 cursor-default hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] group">
           © 2026 Dr. Brinjal Tech Labs. <span className="text-primary/60 group-hover:text-primary ml-2 italic transition-colors duration-500">All Rights Reserved.</span>
         </p>
       </footer>
