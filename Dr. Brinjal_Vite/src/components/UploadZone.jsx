@@ -291,6 +291,25 @@ export default function UploadZone({ onUpload }) {
                     <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite]" />
                 </button>
               </div>
+
+              {/* Pro Tips Section - UI GUARDRAILS */}
+              <div className="w-full max-w-[320px] md:max-w-md pt-4 md:pt-6 border-t border-white/5">
+                <div className="flex items-center gap-2 mb-4 justify-center">
+                  <span className="text-secondary text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Pro Tips for Accurate Diagnosis</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {[
+                    { icon: "🚫", text: "No busy backgrounds." },
+                    { icon: "🔍", text: "Zoom into the leaf." },
+                    { icon: "☀️", text: "Clear natural lighting." }
+                  ].map((tip, i) => (
+                    <div key={i} className="flex md:flex-col items-center gap-3 md:gap-1.5 p-2 rounded-xl bg-white/[0.02] border border-white/5 text-center">
+                      <span className="text-lg">{tip.icon}</span>
+                      <span className="text-[7px] md:text-[8px] font-bold text-slate-500 uppercase leading-tight">{tip.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         ) : (
