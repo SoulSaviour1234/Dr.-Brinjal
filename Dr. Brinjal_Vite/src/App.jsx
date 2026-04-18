@@ -53,22 +53,22 @@ const STATUS_COLORS = {
 
 // Model Selector Sub-component
 const ModelSelector = ({ selected, onSelect }) => (
-  <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 w-full max-w-sm overflow-x-auto">
+  <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 w-full max-w-md overflow-x-auto no-scrollbar">
     <button 
       onClick={() => onSelect('ResNet50')}
-      className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all font-black text-[9px] uppercase tracking-widest ${selected === 'ResNet50' ? 'bg-primary text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+      className={`flex-1 min-w-[100px] flex items-center justify-center gap-2 py-3 px-3 rounded-xl transition-all font-black text-[8px] md:text-[9px] uppercase tracking-widest ${selected === 'ResNet50' ? 'bg-primary text-white shadow-lg scale-[1.02]' : 'text-white/40 hover:text-white/60'}`}
     >
       <Cpu size={14} /> ResNet50
     </button>
     <button 
       onClick={() => onSelect('DenseNet Pro')}
-      className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all font-black text-[9px] uppercase tracking-widest ${selected === 'DenseNet Pro' ? 'bg-secondary text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+      className={`flex-1 min-w-[100px] flex items-center justify-center gap-2 py-3 px-3 rounded-xl transition-all font-black text-[8px] md:text-[9px] uppercase tracking-widest ${selected === 'DenseNet Pro' ? 'bg-secondary text-white shadow-lg scale-[1.02]' : 'text-white/40 hover:text-white/60'}`}
     >
       <Microscope size={14} /> DenseNet Pro
     </button>
     <button 
       onClick={() => onSelect('MobileNetV2')}
-      className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all font-black text-[9px] uppercase tracking-widest ${selected === 'MobileNetV2' ? 'bg-[#a855f7] text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+      className={`flex-1 min-w-[100px] flex items-center justify-center gap-2 py-3 px-3 rounded-xl transition-all font-black text-[8px] md:text-[9px] uppercase tracking-widest ${selected === 'MobileNetV2' ? 'bg-[#a855f7] text-white shadow-lg scale-[1.02]' : 'text-white/40 hover:text-white/60'}`}
     >
       <Cpu size={14} /> MobileNetV2
     </button>
@@ -244,21 +244,21 @@ export default function App() {
   const getStatusColor = (status) => STATUS_COLORS[status] || STATUS_COLORS.moderate;
 
   return (
-    <div className="relative min-h-screen text-slate-100 selection:bg-primary/30 font-sans tracking-tight antialiased">
+    <div className="relative min-h-screen text-slate-100 selection:bg-primary/30 font-sans tracking-tight antialiased flex flex-col items-center overflow-x-hidden">
       {/* 1. Dynamic Status Island (Header) */}
-      <header className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
+      <header className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-auto">
         <motion.div 
           layout
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="glass-panel px-6 py-2.5 flex items-center justify-center gap-4 border-primary/30 shadow-2xl backdrop-blur-3xl animate-pill-radiation"
+          className="glass-panel px-4 md:px-6 py-2 flex md:py-2.5 items-center justify-center gap-4 border-primary/30 shadow-2xl backdrop-blur-3xl animate-pill-radiation"
         >
           <div className="flex items-center gap-4 px-2 select-none">
             <div className={`w-2 h-2 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)] animate-blink ${
               appState === 'loading' ? 'bg-secondary' : 
               appState === 'results' ? 'bg-emerald-400' : 'bg-[#a855f7]'
             }`} />
-            <span className="text-[9px] font-space font-bold uppercase tracking-[0.6em] text-primary whitespace-nowrap">
+            <span className="text-[8px] md:text-[9px] font-space font-bold uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary whitespace-nowrap">
               {appState === 'idle' && activeTab === 'history' && "SCAN HISTORY"}
               {appState === 'idle' && activeTab === 'about' && "ABOUT DR. BRINJAL"}
               {(appState === 'idle' && activeTab === 'home') && "DR. BRINJAL CORE"}
@@ -271,12 +271,12 @@ export default function App() {
 
       {/* 2. Background Engine */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-[10%] left-[5%] w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-orbit" />
-        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[150px] animate-orbit-slow" />
+        <div className="absolute top-[10%] left-[5%] w-64 h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-[120px] animate-orbit" />
+        <div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-secondary/5 rounded-full blur-[150px] animate-orbit-slow" />
       </div>
 
       {/* 3. Main Viewport */}
-      <main className="relative pt-40 pb-24 min-h-screen w-full max-w-7xl mx-auto px-6">
+      <main className="relative pt-16 md:pt-40 pb-24 min-h-screen w-full max-w-7xl mx-auto px-4 md:px-6">
         <AnimatePresence mode="wait">
 
           {/* HOME TAB VIEWPORT SWITCHER */}
@@ -284,9 +284,9 @@ export default function App() {
             <motion.div key="home-view" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full">
                <AnimatePresence mode="wait">
                   {appState === 'idle' && (
-                    <motion.div key="idle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="flex flex-col items-center gap-10">
+                    <motion.div key="idle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="flex flex-col items-center gap-6 md:gap-10">
                       <Hero />
-                      <div className="flex flex-col items-center gap-4 w-full">
+                      <div className="flex flex-col items-center gap-4 w-full px-4">
                         <span className="text-white/20 text-[9px] font-black tracking-[0.4em] uppercase">Select AI Engine</span>
                         <ModelSelector selected={selectedModel} onSelect={setSelectedModel} />
                       </div>
@@ -312,25 +312,25 @@ export default function App() {
           {/* HISTORY TAB */}
           {activeTab === 'history' && (
             <motion.div key="history-view" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="max-w-2xl mx-auto w-full">
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-8 px-2">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center">
                     <HistoryIcon className="text-primary w-5 h-5" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-white">Scan History</h2>
-                    <p className="text-xs text-slate-500">{(history || []).length} records stored locally</p>
+                    <h2 className="text-lg md:text-xl font-bold text-white">Scan History</h2>
+                    <p className="text-[10px] md:text-xs text-slate-500">{(history || []).length} records stored locally</p>
                   </div>
                 </div>
                 {history && history.length > 0 && (
-                  <button onClick={clearHistory} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-bold hover:bg-rose-500/20 transition-all">
-                    <Trash2 size={14} /> Clear All
+                  <button onClick={clearHistory} className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[10px] md:text-xs font-bold hover:bg-rose-500/20 transition-all">
+                    <Trash2 size={12} className="md:w-[14px] md:h-[14px]" /> Clear All
                   </button>
                 )}
               </div>
 
               {!history || history.length === 0 ? (
-                <div className="glass-panel rounded-3xl p-16 flex flex-col items-center justify-center text-center gap-4">
+                <div className="glass-panel rounded-3xl p-10 md:p-16 flex flex-col items-center justify-center text-center gap-4">
                   <div className="w-16 h-16 rounded-3xl bg-white/5 flex items-center justify-center">
                     <Microscope className="text-slate-600 w-8 h-8" />
                   </div>
@@ -341,7 +341,7 @@ export default function App() {
                   </button>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-4 px-2">
                   {history.map((entry) => {
                     if (!entry?.id) return null;
                     return (
@@ -356,27 +356,27 @@ export default function App() {
                           setActiveTab('home');
                           setAppState('results');
                         }}
-                        className="glass-panel rounded-2xl p-5 flex items-center justify-between group hover:border-primary/40 transition-all shadow-lg cursor-pointer scroll-mt-20"
+                        className="glass-panel rounded-2xl p-4 md:p-5 flex items-center justify-between group hover:border-primary/40 transition-all shadow-lg cursor-pointer scroll-mt-20"
                       >
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3 md:gap-4">
                           <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 overflow-hidden group-hover:bg-primary/20 transition-colors">
                             <img src="/eggplant-logo-removebg-preview.png" alt="Logo" className="w-7 h-7 object-contain drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]" />
                           </div>
-                          <div>
-                            <p className="font-bold text-white text-sm group-hover:text-primary transition-colors">{entry.disease || "Unknown"}</p>
-                            <p className="text-xs text-slate-500 mt-0.5">{entry.timestamp}</p>
+                          <div className="min-w-0">
+                            <p className="font-bold text-white text-sm group-hover:text-primary transition-colors truncate">{entry.disease || "Unknown"}</p>
+                            <p className="text-[10px] text-slate-500 mt-0.5">{entry.timestamp}</p>
                             <div className="flex gap-1 mt-2 flex-wrap">
                               {entry.symptoms && Array.isArray(entry.symptoms) && entry.symptoms.slice(0, 2).map((s, idx) => (
-                                <span key={`${entry.id}-s-${idx}`} className="text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/5">{s}</span>
+                                <span key={`${entry.id}-s-${idx}`} className="text-[8px] px-2 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/5 whitespace-nowrap">{s}</span>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="flex flex-col items-end gap-2 shrink-0">
-                          <span className={`text-[10px] font-black uppercase px-3 py-1 rounded-full border ${getStatusColor(entry.status)} shadow-[0_4px_10px_rgba(0,0,0,0.2)]`}>
+                        <div className="flex flex-col items-end gap-2 shrink-0 ml-4">
+                          <span className={`text-[8px] md:text-[10px] font-black uppercase px-2 md:px-3 py-1 rounded-full border ${getStatusColor(entry.status)} shadow-[0_4px_10px_rgba(0,0,0,0.2)] whitespace-nowrap`}>
                             {entry.status || "moderate"}
                           </span>
-                          <span className="text-xs font-mono text-slate-400">{entry.confidence || 0}% conf.</span>
+                          <span className="text-[10px] font-mono text-slate-400">{entry.confidence || 0}%</span>
                         </div>
                       </motion.div>
                     );
@@ -388,79 +388,79 @@ export default function App() {
 
           {/* ABOUT TAB */}
           {activeTab === 'about' && (
-            <motion.div key="about-view" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="max-w-2xl mx-auto w-full space-y-6">
-              <div className="glass-panel rounded-3xl p-10 text-center flex flex-col items-center gap-6 relative overflow-hidden">
+            <motion.div key="about-view" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="max-w-2xl mx-auto w-full space-y-6 px-2">
+              <div className="glass-panel rounded-3xl p-6 md:p-10 text-center flex flex-col items-center gap-6 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] to-purple-500/[0.03] -z-10" />
                 <div className="flex flex-col items-center gap-3">
-                  <motion.div whileHover={{ scale: 1.05 }} className="relative z-10 w-28 h-28 flex items-center justify-center">
+                  <motion.div whileHover={{ scale: 1.05 }} className="relative z-10 w-20 h-20 md:w-28 md:h-28 flex items-center justify-center">
                     <img src="/eggplant-logo-removebg-preview.png" alt="Dr. Brinjal Logo" className="w-full h-full object-contain rotate-[22deg] drop-shadow-[0_25px_30px_rgba(0,0,0,0.8)]" />
                   </motion.div>
                   <div>
-                    <h1 className="text-3xl font-black tracking-tighter text-gradient-purple-green font-space">Dr. Brinjal</h1>
-                    <p className="text-[9px] text-primary font-black uppercase tracking-[0.5em] mt-2">AI-Powered Agri Diagnostic System</p>
+                    <h1 className="text-2xl md:text-3xl font-black tracking-tighter text-gradient-purple-green font-space">Dr. Brinjal</h1>
+                    <p className="text-[8px] md:text-[9px] text-primary font-black uppercase tracking-[0.3em] md:tracking-[0.5em] mt-2">AI-Powered Agri Diagnostic System</p>
                   </div>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed max-w-md">
+                <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-md">
                   Dr. Brinjal uses advanced computer vision and machine learning to detect diseases in brinjal crops. Snap a photo, get an instant diagnosis.
                 </p>
-                <div className="flex gap-3 mt-2">
-                  <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">v1.1.2</span>
-                  <span className="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold">Gemini 2.5</span>
+                <div className="flex gap-2 md:gap-3 mt-2">
+                  <span className="px-3 md:px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] md:text-xs font-bold">v1.1.2</span>
+                  <span className="px-3 md:px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] md:text-xs font-bold">Gemini 2.5</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
                   { icon: Microscope, label: "Diseases Predicted", value: "50+" },
                   { icon: ShieldCheck, label: "Accuracy", value: `${avgAccuracy}%` },
                   { icon: Cpu, label: "AI Engine", value: stats.aiEngine || 'Dual-Tier Hybrid' }
                 ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="glass-panel rounded-2xl p-5 flex flex-col items-center text-center gap-2">
-                    <Icon className="text-primary w-6 h-6" />
-                    <p className="text-xl font-black text-white">{value}</p>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-wider">{label}</p>
+                  <div key={label} className="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-2">
+                    <Icon className="text-primary w-5 h-5 md:w-6 md:h-6" />
+                    <p className="text-lg md:text-xl font-black text-white">{value}</p>
+                    <p className="text-[8px] md:text-[10px] text-slate-500 uppercase tracking-wider">{label}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="glass-panel rounded-2xl p-6 space-y-3">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-white/5 pb-3">Operational Flow</p>
+              <div className="glass-panel rounded-2xl p-5 md:p-6 space-y-3">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-white/5 pb-3">Operational Flow</p>
                 {[
                   "📸 Capture/Upload leaf photo",
                   "🧠 Neural processing session",
                   "📊 Signature extraction",
                   "📍 Real-time recommendation"
                 ].map((step, i) => (
-                  <div key={i} className="flex items-start gap-3 text-sm text-slate-400 font-medium">
+                  <div key={i} className="flex items-start gap-3 text-xs md:text-sm text-slate-400 font-medium">
                     <div className="w-1 h-1 rounded-full bg-emerald-500 mt-2" />
                     <span>{step}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="glass-panel p-8 space-y-8 relative overflow-hidden group">
+              <div className="glass-panel p-6 md:p-8 space-y-8 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="flex flex-col items-center gap-2 relative">
-                  <h3 className="text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Core Engineering</h3>
-                  <h2 className="text-xl font-black text-white tracking-tighter">Dr. Brinjal Tech Labs</h2>
+                  <h3 className="text-[8px] md:text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Core Engineering</h3>
+                  <h2 className="text-lg md:text-xl font-black text-white tracking-tighter">Dr. Brinjal Tech Labs</h2>
                   <div className="h-px w-20 bg-gradient-to-r from-transparent via-primary to-transparent mt-2" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
                   {TEAM_MEMBERS.map((member, i) => (
-                    <div key={i} className="bg-white/5 border border-white/5 p-4 rounded-3xl flex items-center justify-between hover:border-primary/30 hover:bg-white/[0.07] transition-all duration-300 group/card">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-2xl bg-midnight/60 border border-white/10 flex items-center justify-center text-[10px] font-black text-primary group-hover/card:scale-110 transition-transform">
+                    <div key={i} className="bg-white/5 border border-white/5 p-3 md:p-4 rounded-3xl flex items-center justify-between hover:border-primary/30 hover:bg-white/[0.07] transition-all duration-300 group/card">
+                      <div className="flex items-center gap-3 md:gap-4">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-2xl bg-midnight/60 border border-white/10 flex items-center justify-center text-[8px] md:text-[10px] font-black text-primary group-hover/card:scale-110 transition-transform">
                           0{i + 1}
                         </div>
                         <div className="text-left">
-                          <p className="text-sm font-bold text-white">{member.name}</p>
-                          <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">{member.role}</p>
+                          <p className="text-xs md:text-sm font-bold text-white">{member.name}</p>
+                          <p className="text-[8px] md:text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">{member.role}</p>
                         </div>
                       </div>
-                      <div className="flex gap-1.5">
-                         <a href={member.whatsapp !== '#' ? `https://wa.me/91${member.whatsapp}` : "#"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-emerald-400/60 hover:text-emerald-400 transition-all"><WhatsApp size={14} /></a>
-                         <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-white/5 hover:bg-rose-500/20 text-rose-400/60 hover:text-rose-400 transition-all"><InstagramIcon size={14} /></a>
-                         <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-white/5 hover:bg-blue-500/20 text-blue-400/60 hover:text-blue-400 transition-all"><LinkedinIcon size={14} /></a>
+                      <div className="flex gap-1">
+                         <a href={member.whatsapp !== '#' ? `https://wa.me/91${member.whatsapp}` : "#"} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-emerald-400/60 hover:text-emerald-400 transition-all"><WhatsApp size={12} className="md:w-[14px] md:h-[14px]" /></a>
+                         <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-rose-500/20 text-rose-400/60 hover:text-rose-400 transition-all"><InstagramIcon size={12} className="md:w-[14px] md:h-[14px]" /></a>
+                         <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-blue-500/20 text-blue-400/60 hover:text-blue-400 transition-all"><LinkedinIcon size={12} className="md:w-[14px] md:h-[14px]" /></a>
                       </div>
                     </div>
                   ))}
@@ -473,8 +473,8 @@ export default function App() {
       </main>
 
       {/* 4. Fixed Bottom Navigation */}
-      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-sm px-4">
-        <div className="glass-panel px-6 py-4 flex items-center justify-between border-white/10 bg-midnight/40 backdrop-blur-3xl shadow-2xl">
+      <nav className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-[90%] md:max-w-sm px-4">
+        <div className="glass-panel px-4 md:px-6 py-3 md:py-4 flex items-center justify-between border-white/10 bg-midnight/40 backdrop-blur-3xl shadow-2xl">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -487,13 +487,12 @@ export default function App() {
                 }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="relative flex flex-col items-center gap-1.5"
+                className="relative flex flex-col items-center gap-1"
               >
-                <Icon className={`w-5 h-5 transition-colors ${isActive ? 'text-primary' : 'text-slate-500'}`} />
-                <span className={`text-[10px] uppercase font-bold tracking-widest ${isActive ? 'text-white' : 'text-slate-500'}`}>
+                <Icon className={`w-4 h-4 md:w-5 md:h-5 transition-colors ${isActive ? 'text-primary' : 'text-slate-500'}`} />
+                <span className={`text-[8px] md:text-[10px] uppercase font-bold tracking-widest ${isActive ? 'text-white' : 'text-slate-500'}`}>
                   {item.label}
                 </span>
-                {/* Active indicator dot removed per user request */}
               </motion.button>
             );
           })}
