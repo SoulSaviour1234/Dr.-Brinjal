@@ -22,7 +22,7 @@ export default function Hero() {
       animate="show"
       className="w-full flex flex-col items-center justify-center text-center py-2"
     >
-      <motion.div variants={item} className="relative mb-10 md:mb-16 flex flex-col items-center w-full px-2">
+      <motion.div variants={item} className="relative mb-6 md:mb-16 flex flex-col items-center w-full px-2">
         {/* Pulsing Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-br from-emerald-500/10 via-purple-500/10 to-transparent blur-[100px] rounded-full animate-pulse -z-10" />
         
@@ -70,7 +70,7 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      <motion.div variants={item} className="mt-8 md:mt-12 px-6">
+      <motion.div variants={item} className="mt-2 md:mt-12 px-6">
         <p className="max-w-xl text-base sm:text-xl md:text-2xl text-slate-400 font-medium leading-tight tracking-tight font-space text-center mx-auto">
           Identify plant diseases in seconds. <br className="hidden md:block" />
           <span className="text-gradient-dr-brinjal font-black underline decoration-emerald-500/30 underline-offset-8 uppercase">Protect your harvest</span>
