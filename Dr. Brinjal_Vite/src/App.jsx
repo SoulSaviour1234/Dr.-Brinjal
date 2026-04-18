@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  History as HistoryIcon, 
-  User as AboutIcon, 
+import {
+  History as HistoryIcon,
+  User as AboutIcon,
   LayoutDashboard,
   ShieldCheck,
   Microscope,
@@ -15,7 +15,7 @@ import {
 // Custom Branded Icons
 const WhatsApp = ({ size = 20, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor" className={className}>
-    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
   </svg>
 );
 
@@ -29,7 +29,7 @@ const InstagramIcon = ({ size = 20, className = "" }) => (
 
 const LinkedinIcon = ({ size = 20, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor" className={className}>
-    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c1.351 0 2.191-.896 2.191-2.016-.025-1.145-.84-2.016-2.166-2.016s-2.191.871-2.191 2.016c0 1.12.84 2.016 2.14 2.016h.026zm9.182 8.212V9.359c0-2.167-1.157-3.176-2.696-3.176-1.242 0-1.799.682-2.109 1.162v-1.17h-2.4c.032.678 0 7.225 0 7.225h2.4v-4.03c0-.216.015-.432.079-.586.173-.432.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.86h2.4z"/>
+    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c1.351 0 2.191-.896 2.191-2.016-.025-1.145-.84-2.016-2.166-2.016s-2.191.871-2.191 2.016c0 1.12.84 2.016 2.14 2.016h.026zm9.182 8.212V9.359c0-2.167-1.157-3.176-2.696-3.176-1.242 0-1.799.682-2.109 1.162v-1.17h-2.4c.032.678 0 7.225 0 7.225h2.4v-4.03c0-.216.015-.432.079-.586.173-.432.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.86h2.4z" />
   </svg>
 );
 
@@ -37,6 +37,9 @@ import Hero from './components/Hero';
 import UploadZone from './components/UploadZone';
 import LoadingState from './components/LoadingState';
 import ResultsDashboard from './components/ResultsDashboard';
+import ImageCropper from './components/ImageCropper';
+import * as tf from '@tensorflow/tfjs';
+import * as mobilenet from '@tensorflow-models/mobilenet';
 
 // Strategy: Move static UI config outside to prevent re-renders and scope issues
 const NAV_ITEMS = [
@@ -45,28 +48,29 @@ const NAV_ITEMS = [
   { id: 'about', icon: AboutIcon, label: 'About' }
 ];
 
-const STATUS_COLORS = { 
-  critical: 'text-rose-400 bg-rose-500/10 border-rose-500/20', 
-  moderate: 'text-amber-400 bg-amber-500/10 border-amber-500/20', 
-  healthy: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' 
+const STATUS_COLORS = {
+  critical: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
+  moderate: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
+  healthy: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+  warning: 'text-orange-400 bg-orange-500/10 border-orange-500/20'
 };
 
 // Model Selector Sub-component
 const ModelSelector = ({ selected, onSelect }) => (
   <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 w-full max-w-md overflow-x-auto no-scrollbar">
-    <button 
+    <button
       onClick={() => onSelect('ResNet50')}
       className={`flex-1 min-w-[100px] flex items-center justify-center gap-2 py-3 px-3 rounded-xl transition-all font-black text-[8px] md:text-[9px] uppercase tracking-widest ${selected === 'ResNet50' ? 'bg-primary text-white shadow-lg scale-[1.02]' : 'text-white/40 hover:text-white/60'}`}
     >
       <Cpu size={14} /> ResNet50
     </button>
-    <button 
+    <button
       onClick={() => onSelect('DenseNet Pro')}
       className={`flex-1 min-w-[100px] flex items-center justify-center gap-2 py-3 px-3 rounded-xl transition-all font-black text-[8px] md:text-[9px] uppercase tracking-widest ${selected === 'DenseNet Pro' ? 'bg-secondary text-white shadow-lg scale-[1.02]' : 'text-white/40 hover:text-white/60'}`}
     >
       <Microscope size={14} /> DenseNet Pro
     </button>
-    <button 
+    <button
       onClick={() => onSelect('MobileNetV2')}
       className={`flex-1 min-w-[100px] flex items-center justify-center gap-2 py-3 px-3 rounded-xl transition-all font-black text-[8px] md:text-[9px] uppercase tracking-widest ${selected === 'MobileNetV2' ? 'bg-[#a855f7] text-white shadow-lg scale-[1.02]' : 'text-white/40 hover:text-white/60'}`}
     >
@@ -112,28 +116,52 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [diagnosisData, setDiagnosisData] = useState(null);
   const [selectedModel, setSelectedModel] = useState('DenseNet Pro');
-  
+  const [imageToCrop, setImageToCrop] = useState(null);
+  const [pendingGeoData, setPendingGeoData] = useState(null);
+
+  // Gatekeeper States
+  const [tfModel, setTfModel] = useState(null);
+  const [isModelLoading, setIsModelLoading] = useState(true);
+  const [gatekeeperError, setGatekeeperError] = useState(null);
+  const [isAnalyzingPreflight, setIsAnalyzingPreflight] = useState(false);
+
   // Defensive initialization for history
   const [history, setHistory] = useState(() => {
-    try { 
+    try {
       const stored = localStorage.getItem('brinjal_history');
       if (!stored) return [];
       const parsed = JSON.parse(stored);
       return Array.isArray(parsed) ? parsed : [];
-    } catch (err) { 
+    } catch (err) {
       console.error("Critical: Brinjal History Parse Failed", err);
-      return []; 
+      return [];
     }
   });
 
   const [stats, setStats] = useState({ diseaseCount: 18, aiEngine: 'Hybrid' });
 
+  // Load MobileNet on mount
+  useEffect(() => {
+    const loadModel = async () => {
+      try {
+        await tf.ready();
+        const model = await mobilenet.load();
+        setTfModel(model);
+        setIsModelLoading(false);
+      } catch (error) {
+        console.error("Failed to load MobileNet Gatekeeper:", error);
+        setIsModelLoading(false);
+      }
+    };
+    loadModel();
+  }, []);
+
   useEffect(() => {
     fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/get_stats')
       .then(res => res.json())
-      .then(data => setStats({ 
-        diseaseCount: data.disease_count || 18, 
-        aiEngine: data.ai_engine || 'Dual-Tier Hybrid' 
+      .then(data => setStats({
+        diseaseCount: data.disease_count || 18,
+        aiEngine: data.ai_engine || 'Dual-Tier Hybrid'
       }))
       .catch(err => {
         console.error("Stats Fetch Error:", err);
@@ -154,7 +182,7 @@ export default function App() {
       id: Date.now(),
       timestamp: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
     };
-    
+
     setHistory(prev => {
       const current = Array.isArray(prev) ? prev : [];
       const updated = [entry, ...current].slice(0, 20);
@@ -173,61 +201,107 @@ export default function App() {
   };
 
   const handleStartAnalysis = async (file, geoData) => {
+    if (!tfModel) {
+      alert("Gatekeeper model is still loading. Please wait a moment.");
+      return;
+    }
+
+    setIsAnalyzingPreflight(true);
+    setGatekeeperError(null);
+
+    try {
+      // Create an image element to pass to MobileNet
+      const imgElement = document.createElement('img');
+      imgElement.src = file;
+      await new Promise((resolve, reject) => {
+        imgElement.onload = resolve;
+        imgElement.onerror = reject;
+      });
+
+      // Get top 3 predictions
+      const predictions = await tfModel.classify(imgElement);
+
+      const allowedKeywords = [
+        'leaf', 'plant', 'flower', 'pot', 'tree', 'vegetable', 'produce', 'fruit',
+        'daisy', 'broccoli', 'cabbage', 'cauliflower', 'zucchini', 'squash', 'cucumber',
+        'artichoke', 'cardoon', 'corn', 'vine', 'greenhouse', 'nursery', 'grass', 'fern',
+        'moss', 'fungus', 'mushroom', 'crop', 'agriculture', 'branch', 'stem',
+        'eggplant', 'aubergine', 'tomato', 'potato', 'pepper', 'granny smith', 'hay',
+        'earth', 'soil', 'ground', 'wood', 'velvet'
+      ];
+
+      const isPlant = predictions.some(p =>
+        allowedKeywords.some(keyword => p.className.toLowerCase().includes(keyword))
+      );
+
+      // ImageNet is highly confident for its trained objects (dogs, cars, faces typically > 60%).
+      // For zoomed-in diseased leaves, it often predicts random textures with low confidence.
+      // If it's uncertain (< 40% confidence on its top guess), we let our specialized backend handle it.
+      const isUncertain = predictions[0].probability < 0.4;
+
+      if (isPlant || isUncertain) {
+        setImageToCrop(file);
+        setPendingGeoData(geoData);
+      } else {
+        setGatekeeperError(`Invalid Image Detected: Please upload a clear picture of a plant leaf.`);
+      }
+    } catch (error) {
+      console.error("Pre-flight analysis failed:", error);
+      // Fallback to allowing crop if pre-flight crashes
+      setImageToCrop(file);
+      setPendingGeoData(geoData);
+    } finally {
+      setIsAnalyzingPreflight(false);
+    }
+  };
+
+  const handleCompleteCrop = async (croppedImage) => {
+    setImageToCrop(null);
     setAppState('loading');
     try {
-      // Create FormData to send image and model choice
       const formData = new FormData();
-      
-      // If file is a base64 string (from camera), convert to Blob
-      if (typeof file === 'string' && file.startsWith('data:image')) {
-        const response = await fetch(file);
-        const blob = await response.blob();
-        formData.append('file', blob, 'capture.jpg');
-      } else {
-        formData.append('file', file);
-      }
-      
-      // Send the model selected from the UI
+
+      // Convert base64 cropped image to Blob
+      const response = await fetch(croppedImage);
+      const blob = await response.blob();
+      formData.append('file', blob, 'cropped_capture.jpg');
+
       formData.append('model_type', selectedModel);
 
-      // Trigger POST request to the local FastAPI backend
-      const response = await fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/predict', {
+      const apiResponse = await fetch('https://raajpakhi123-dr-brinjal-backend.hf.space/predict', {
         method: 'POST',
         body: formData,
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Backend Error:", errorData);
+      if (!apiResponse.ok) {
+        const errorData = await apiResponse.json();
         throw new Error(errorData.msg || errorData.detail || 'Prediction failed');
       }
 
-      // Handle the returned JSON data from Task 2
-      const result = await response.json();
-      
-      // Check for backend errors (e.g., model load failure)
-      if (result.error) {
-        throw new Error(result.error);
-      }
+      const result = await apiResponse.json();
+      if (result.error) throw new Error(result.error);
 
       const topPrediction = result.predictions[0];
-      
-      // Map API results to UI state (Surface Tier)
+      const confidence = Math.round(topPrediction.confidence);
       const isHealthy = topPrediction.label.toLowerCase().includes('healthy');
+
+      // Apply UI Guardrail: Low Confidence Safety Net
+      const isLowConfidence = confidence < 65;
+
       const finalData = {
         disease: topPrediction.label,
-        confidence: Math.round(topPrediction.confidence),
-        status: isHealthy ? "healthy" : (topPrediction.confidence > 80 ? "critical" : "moderate"),
-        image: typeof file === 'string' ? file : URL.createObjectURL(file), // Local preview
-        rawFile: file, // Keep raw file for Tier 2 on-demand
-        geo: geoData,
+        confidence: confidence,
+        status: isLowConfidence ? "warning" : (isHealthy ? "healthy" : (confidence > 80 ? "critical" : "moderate")),
+        isLowConfidence,
+        image: croppedImage,
+        rawFile: croppedImage,
+        geo: pendingGeoData,
         modelUsed: result.selected_model,
-        // Mapping dynamic data from Gemini AI
         symptoms: result.symptoms.length > 0 ? result.symptoms : ["Diagnostic signature detected"],
         clinical_action_plan: result.clinical_action_plan.length > 0 ? result.clinical_action_plan : ["Maintain proper hydration and nutrients."],
         hydration: result.hydration || "Standard 45%",
         photoperiod: result.photoperiod || "Standard 12h",
-        predictions: result.predictions // Store all top 3 for dashboard
+        predictions: result.predictions
       };
 
       setDiagnosisData(finalData);
@@ -235,7 +309,7 @@ export default function App() {
       setAppState('results');
     } catch (error) {
       console.error("Critical Backend Error:", error);
-      alert(`❌ Diagnostic Engine Error: ${error.message}\n\nPlease ensure the Backend Space is running on Hugging Face.`);
+      alert(`❌ Diagnostic Engine Error: ${error.message}`);
       setAppState('idle');
     }
   };
@@ -245,19 +319,29 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen text-slate-100 selection:bg-primary/30 font-sans tracking-tight antialiased flex flex-col items-center overflow-x-hidden">
+      {/* Image Cropper Modal */}
+      <AnimatePresence>
+        {imageToCrop && (
+          <ImageCropper
+            image={imageToCrop}
+            onCropComplete={handleCompleteCrop}
+            onCancel={() => setImageToCrop(null)}
+          />
+        )}
+      </AnimatePresence>
+
       {/* 1. Dynamic Status Island (Header) */}
       <header className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-auto">
-        <motion.div 
+        <motion.div
           layout
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className="glass-panel px-4 md:px-6 py-2 flex md:py-2.5 items-center justify-center gap-4 border-primary/30 shadow-2xl backdrop-blur-3xl animate-pill-radiation"
         >
           <div className="flex items-center gap-4 px-2 select-none">
-            <div className={`w-2 h-2 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)] animate-blink ${
-              appState === 'loading' ? 'bg-secondary' : 
+            <div className={`w-2 h-2 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)] animate-blink ${appState === 'loading' ? 'bg-secondary' :
               appState === 'results' ? 'bg-emerald-400' : 'bg-[#a855f7]'
-            }`} />
+              }`} />
             <span className="text-[8px] md:text-[9px] font-space font-bold uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary whitespace-nowrap">
               {appState === 'idle' && activeTab === 'history' && "SCAN HISTORY"}
               {appState === 'idle' && activeTab === 'about' && "ABOUT DR. BRINJAL"}
@@ -282,30 +366,57 @@ export default function App() {
           {/* HOME TAB VIEWPORT SWITCHER */}
           {activeTab === 'home' && (
             <motion.div key="home-view" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full">
-               <AnimatePresence mode="wait">
-                  {appState === 'idle' && (
-                    <motion.div key="idle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="flex flex-col items-center gap-6 md:gap-10">
-                      <Hero />
-                      <div className="flex flex-col items-center gap-4 w-full px-4">
-                        <span className="text-white/20 text-[9px] font-black tracking-[0.4em] uppercase">Select AI Engine</span>
-                        <ModelSelector selected={selectedModel} onSelect={setSelectedModel} />
-                      </div>
-                      <UploadZone onUpload={handleStartAnalysis} />
-                    </motion.div>
-                  )}
+              <AnimatePresence mode="wait">
+                {appState === 'idle' && (
+                  <motion.div key="idle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="flex flex-col items-center gap-6 md:gap-10">
+                    <Hero />
+                    <div className="flex flex-col items-center gap-4 w-full px-4">
+                      <span className="text-white/20 text-[9px] font-black tracking-[0.4em] uppercase">Select AI Engine</span>
+                      <ModelSelector selected={selectedModel} onSelect={setSelectedModel} />
+                    </div>
 
-                  {appState === 'loading' && (
-                    <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                      <LoadingState />
-                    </motion.div>
-                  )}
+                    {/* Gatekeeper UI Status */}
+                    <div className="w-full max-w-xl px-4 flex flex-col gap-4">
+                      {isModelLoading && (
+                        <div className="w-full flex items-center justify-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 animate-pulse">
+                          <div className="w-4 h-4 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
+                          <span className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-bold">Initializing Gatekeeper...</span>
+                        </div>
+                      )}
 
-                  {appState === 'results' && (
-                    <motion.div key="results" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, y: -20 }} className="flex flex-col items-center w-full">
-                      <ResultsDashboard data={diagnosisData} onReset={() => { setAppState('idle'); }} />
-                    </motion.div>
-                  )}
-               </AnimatePresence>
+                      {isAnalyzingPreflight && (
+                        <div className="w-full flex items-center justify-center gap-3 p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20">
+                          <div className="w-4 h-4 rounded-full border-2 border-blue-400/20 border-t-blue-400 animate-spin" />
+                          <span className="text-[10px] text-blue-400 uppercase tracking-[0.2em] font-bold">Pre-flight verification in progress...</span>
+                        </div>
+                      )}
+
+                      {gatekeeperError && (
+                        <div className="w-full p-4 md:p-6 rounded-3xl bg-rose-500/10 border border-rose-500/20 text-center animate-in slide-in-from-top-4 duration-500 shadow-[0_0_30px_rgba(244,63,94,0.15)] flex flex-col items-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center text-xl mb-1 border border-rose-500/30">
+                            🚫
+                          </div>
+                          <p className="text-rose-400 text-sm md:text-base font-bold leading-relaxed">{gatekeeperError}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <UploadZone onUpload={handleStartAnalysis} />
+                  </motion.div>
+                )}
+
+                {appState === 'loading' && (
+                  <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                    <LoadingState />
+                  </motion.div>
+                )}
+
+                {appState === 'results' && (
+                  <motion.div key="results" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, y: -20 }} className="flex flex-col items-center w-full">
+                    <ResultsDashboard data={diagnosisData} onReset={() => { setAppState('idle'); }} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
 
@@ -337,7 +448,7 @@ export default function App() {
                   <p className="text-slate-500 font-bold">No scans yet</p>
                   <p className="text-slate-600 text-sm">Your brinjal diagnoses will appear here after your first scan.</p>
                   <button onClick={() => setActiveTab('home')} className="mt-2 px-6 py-2.5 rounded-xl bg-primary/20 border border-primary/30 text-primary text-sm font-bold hover:bg-primary/30 transition-all flex items-center gap-2">
-                    Start Scanning <ChevronRight size={16}/>
+                    Start Scanning <ChevronRight size={16} />
                   </button>
                 </div>
               ) : (
@@ -458,9 +569,9 @@ export default function App() {
                         </div>
                       </div>
                       <div className="flex gap-1">
-                         <a href={member.whatsapp !== '#' ? `https://wa.me/91${member.whatsapp}` : "#"} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-emerald-400/60 hover:text-emerald-400 transition-all"><WhatsApp size={12} className="md:w-[14px] md:h-[14px]" /></a>
-                         <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-rose-500/20 text-rose-400/60 hover:text-rose-400 transition-all"><InstagramIcon size={12} className="md:w-[14px] md:h-[14px]" /></a>
-                         <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-blue-500/20 text-blue-400/60 hover:text-blue-400 transition-all"><LinkedinIcon size={12} className="md:w-[14px] md:h-[14px]" /></a>
+                        <a href={member.whatsapp !== '#' ? `https://wa.me/91${member.whatsapp}` : "#"} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-emerald-400/60 hover:text-emerald-400 transition-all"><WhatsApp size={12} className="md:w-[14px] md:h-[14px]" /></a>
+                        <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-rose-500/20 text-rose-400/60 hover:text-rose-400 transition-all"><InstagramIcon size={12} className="md:w-[14px] md:h-[14px]" /></a>
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 rounded-xl bg-white/5 hover:bg-blue-500/20 text-blue-400/60 hover:text-blue-400 transition-all"><LinkedinIcon size={12} className="md:w-[14px] md:h-[14px]" /></a>
                       </div>
                     </div>
                   ))}
