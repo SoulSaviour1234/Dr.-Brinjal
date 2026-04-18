@@ -22,17 +22,17 @@ export default function Hero() {
       animate="show"
       className="w-full flex flex-col items-center justify-center text-center py-2"
     >
-      <motion.div variants={item} className="relative mb-6 drop-shadow-2xl md:-ml-8 -mt-10 flex flex-col items-center">
-        {/* Pulsing Background Glow (Green & Purple) */}
+      <motion.div variants={item} className="relative mb-10 md:mb-16 flex flex-col items-center w-full px-2">
+        {/* Pulsing Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-br from-emerald-500/10 via-purple-500/10 to-transparent blur-[100px] rounded-full animate-pulse -z-10" />
         
-        <div className="flex flex-col md:flex-row items-center justify-center gap-0 md:gap-0 relative z-10 font-space font-bold">
-          {/* High-Fidelity Transparent Asset */}
-          <div className="relative group md:-mr-14 -mt-4">
+        <div className="flex flex-row items-center justify-center relative z-10 font-space font-bold w-full max-w-full">
+          {/* Logo Container - PRECISE ALIGNMENT */}
+          <div className="relative group shrink-0 -mt-2 md:-mt-10 -mr-4 md:-mr-14 z-20">
             <motion.div 
-              initial={{ rotate: 22 }}
-              whileHover={{ scale: 1.05, rotate: 25 }}
-              className="w-40 h-40 sm:w-48 sm:h-48 relative z-10 drop-shadow-[0_30px_60px_rgba(0,0,0,0.9)]"
+              initial={{ rotate: 18 }}
+              whileHover={{ scale: 1.1, rotate: 32 }}
+              className="w-20 h-20 sm:w-32 sm:h-32 md:w-64 md:h-64 relative z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] md:drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)] cursor-pointer"
             >
               <img 
                 src="/eggplant-logo-removebg-preview.png" 
@@ -42,49 +42,38 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Brand + Engine Container (Centered Sub-unit) */}
-          <div className="flex flex-col items-center text-center">
-            <h1 className="flex flex-col md:flex-row items-center md:items-baseline tracking-tighter leading-none mb-0">
+          {/* Title Block - NO STACKING, MATCHED SPACING */}
+          <div className="flex flex-col items-start text-left">
+            <h1 className="flex flex-row items-baseline tracking-tighter leading-none mb-0 md:mb-1 relative -mt-2 md:-mt-10">
               <div className="flex items-baseline text-gradient-dr-brinjal">
-                <span className="text-6xl sm:text-7xl md:text-[7.5rem]">D</span>
-                <span className="text-3xl sm:text-4xl md:text-[3.8rem] lowercase ml-[-0.05em]">r</span>
-                <span className="text-3xl sm:text-4xl md:text-[3.8rem] ml-[-0.05em]">.</span>
+                <span className="text-5xl sm:text-7xl md:text-[9.5rem]">D</span>
+                <span className="text-2xl sm:text-4xl md:text-[4.8rem] lowercase ml-[-0.05em]">r</span>
+                <span className="text-2xl sm:text-4xl md:text-[4.8rem] ml-[-0.05em]">.</span>
               </div>
-              <div className="flex items-baseline text-gradient-dr-brinjal md:ml-6 mt-2 md:mt-0">
-                <span className="text-6xl sm:text-7xl md:text-[7.5rem]">B</span>
-                <span className="text-3xl sm:text-4xl md:text-[4.2rem] lowercase ml-[-0.05em]">rinjal</span>
+              <div className="flex items-baseline text-gradient-dr-brinjal ml-2 sm:ml-6">
+                <span className="text-5xl sm:text-7xl md:text-[9.5rem]">B</span>
+                <span className="text-2xl sm:text-4xl md:text-[5.5rem] lowercase ml-[-0.05em]">rinjal</span>
               </div>
             </h1>
 
-            {/* Futuristic Label - Anchored back under brand name */}
-            <div className="relative group/engine mt-1.5 w-fit">
-              {/* Radiating Gradient Glow */}
-              <div className="absolute inset-0 z-20 pointer-events-none">
-                <motion.div 
-                   animate={{ 
-                      rotate: [0, 360],
-                      scale: [1, 1.1, 1]
-                   }}
-                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                   className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_150deg,oklch(0.6_0.25_300)_180deg,transparent_210deg,oklch(0.8_0.2_140)_240deg,transparent_270deg)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000"
-                />
-              </div>
-              
-              <div className="relative flex items-center gap-4 px-6 py-2 rounded-full glass-panel border-white/10 bg-white/[0.03] shadow-[0_0_30px_rgba(168,85,247,0.1)]">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b857] animate-pulse" />
-                <p className="text-[9px] font-bold uppercase tracking-[0.5em] text-white/50 font-space leading-none">
+            {/* AI Engine Label - Adjusted Position */}
+            <div className="relative w-fit ml-[-0.5rem] md:ml-[-1.5rem] mt-0 md:mt-1">
+              <div className="relative flex items-center gap-1.5 md:gap-4 px-3 md:px-7 py-1.5 md:py-2.5 rounded-full glass-panel border-white/10 bg-white/[0.04] shadow-2xl">
+                <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#10b857] animate-pulse" />
+                <p className="text-[5px] sm:text-[8px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.6em] text-white/60 font-space leading-none whitespace-nowrap">
                   AI BRINJAL HEALTH DIAGNOSTICS v4.0
                 </p>
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_#a855f7] animate-pulse" />
+                <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-purple-400 shadow-[0_0_12px_#a855f7] animate-pulse" />
               </div>
             </div>
           </div>
         </div>
       </motion.div>
 
-      <motion.div variants={item} className="mt-8">
-        <p className="max-w-xl text-xl sm:text-2xl text-slate-400 font-medium leading-snug px-6 tracking-tight font-space text-center">
-          Identify diseases in seconds. <span className="text-gradient-dr-brinjal font-black underline decoration-emerald-500/30 underline-offset-8 uppercase">Protect your harvest</span> for a better tomorrow.
+      <motion.div variants={item} className="mt-8 md:mt-12 px-6">
+        <p className="max-w-xl text-base sm:text-xl md:text-2xl text-slate-400 font-medium leading-tight tracking-tight font-space text-center mx-auto">
+          Identify plant diseases in seconds. <br className="hidden md:block" />
+          <span className="text-gradient-dr-brinjal font-black underline decoration-emerald-500/30 underline-offset-8 uppercase">Protect your harvest</span>
         </p>
       </motion.div>
     </motion.section>

@@ -138,7 +138,7 @@ export default function UploadZone({ onUpload }) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="relative rounded-[3rem] overflow-hidden min-h-[420px] glass-panel border-[4px] border-white/10 shadow-[0_60px_100px_-50px_rgba(0,0,0,0.8)] bg-black/40"
+            className="relative rounded-[3rem] overflow-hidden min-h-[350px] md:min-h-[420px] glass-panel border-[4px] border-white/10 shadow-[0_60px_100px_-50px_rgba(0,0,0,0.8)] bg-black/40"
           >
             {/* Inner Border Glow */}
             <div className="absolute inset-0 rounded-[3rem] border border-white/5 pointer-events-none z-40 shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]" />
@@ -154,7 +154,7 @@ export default function UploadZone({ onUpload }) {
               playsInline 
               muted
               onPlaying={() => setIsVideoPlaying(true)}
-              className="w-full h-full object-cover min-h-[420px]"
+              className="w-full h-full object-cover min-h-[350px] md:min-h-[420px]"
             />
             
             {/* Connecting Spinner (Visible while hardware wakes up) */}
@@ -190,25 +190,25 @@ export default function UploadZone({ onUpload }) {
                 <div className="absolute top-1/2 left-0 right-0 h-[3px] bg-emerald-500/80 shadow-[0_0_25px_rgba(16,185,129,0.7)] animate-[scan_3s_infinite]" />
                 <div className="absolute inset-8 border-2 border-white/15 rounded-3xl" />
                 
-                <div className="absolute top-12 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b857] animate-pulse" />
-                    <span className="text-[8px] font-black uppercase tracking-[0.4em] text-emerald-400/80 font-space">Optical Sensor Active</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7] animate-pulse" />
+                <div className="absolute top-8 md:top-12 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 flex items-center gap-3">
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b857] animate-pulse" />
+                    <span className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em] text-emerald-400/80 font-space">Optical Sensor Active</span>
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7] animate-pulse" />
                 </div>
             </div>
 
-            <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-6 z-20">
+            <div className="absolute bottom-8 md:bottom-10 left-0 right-0 flex justify-center gap-4 md:gap-6 z-20 px-4">
                 <button
                     onClick={stopScanner}
-                    className="p-4 bg-white/5 backdrop-blur-2xl rounded-2xl text-white hover:bg-white/10 transition-all active:scale-90 border border-white/10"
+                    className="p-3 md:p-4 bg-white/5 backdrop-blur-2xl rounded-2xl text-white hover:bg-white/10 transition-all active:scale-90 border border-white/10"
                 >
-                    <X size={20} />
+                    <X size={18} className="md:w-5 md:h-5" />
                 </button>
                 <button
                     onClick={capturePhoto}
-                    className="px-8 py-3.5 bg-white/10 backdrop-blur-3xl text-white rounded-full text-lg font-black shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all hover:bg-white hover:text-midnight hover:-translate-y-0.5 active:scale-95 flex items-center gap-3 border border-white/30"
+                    className="flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3.5 bg-white/10 backdrop-blur-3xl text-white rounded-full text-sm md:text-lg font-black shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all hover:bg-white hover:text-midnight hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-3 border border-white/30"
                 >
-                    <Activity className="h-5 w-5 animate-pulse" />
+                    <Activity className="h-4 w-4 md:h-5 md:w-5 animate-pulse" />
                     Capture
                 </button>
             </div>
@@ -221,9 +221,9 @@ export default function UploadZone({ onUpload }) {
             exit={{ opacity: 0, scale: 0.95 }}
             className={`
               relative group
-              min-h-[420px]
-              rounded-[3.5rem] transition-all duration-1000
-              flex flex-col items-center justify-center p-10
+              min-h-[350px] md:min-h-[420px]
+              rounded-[3rem] md:rounded-[3.5rem] transition-all duration-1000
+              flex flex-col items-center justify-center p-6 md:p-10
               overflow-hidden glass-panel border-white/5
               ${isDragging ? "bg-primary/20 border-primary/40 ring-4 ring-primary/10" : "hover:bg-primary/5 hover:border-white/20"}
             `}
@@ -242,7 +242,7 @@ export default function UploadZone({ onUpload }) {
             {/* Holographic Background Layer */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-30 group-hover:opacity-100 transition-opacity" />
             
-            <div className="w-full h-full flex flex-col items-center justify-between gap-8 relative z-10">
+            <div className="w-full h-full flex flex-col items-center justify-between gap-6 md:gap-8 relative z-10">
               {/* Camera Interaction Core */}
               <div 
                  onClick={startScanner}
@@ -251,43 +251,43 @@ export default function UploadZone({ onUpload }) {
                 <motion.div 
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 4, repeat: Infinity }}
-                  className="w-24 h-24 rounded-full bg-midnight glass-panel flex items-center justify-center text-white relative z-10 border-white/10 group-hover:border-white transition-colors duration-500"
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-midnight glass-panel flex items-center justify-center text-white relative z-10 border-white/10 group-hover:border-white transition-colors duration-500"
                 >
-                  <Camera className="w-10 h-10 text-white/80 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-[-10px] rounded-full border border-dashed border-white/20 animate-spin-slow" />
+                  <Camera className="w-8 h-8 md:w-10 md:h-10 text-white/80 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-[-8px] md:inset-[-10px] rounded-full border border-dashed border-white/20 animate-spin-slow" />
                 </motion.div>
-                <div className="absolute inset-x-0 -bottom-6 h-12 bg-white/10 rounded-full blur-[40px] opacity-20 group-hover:opacity-60 transition-opacity" />
+                <div className="absolute inset-x-0 -bottom-6 h-10 md:h-12 bg-white/10 rounded-full blur-[30px] md:blur-[40px] opacity-20 group-hover:opacity-60 transition-opacity" />
               </div>
 
               {/* Branding & CTA Header */}
-              <div className="space-y-4 text-center">
-                <div className="flex flex-col items-center gap-3 text-center">
-                    <h3 className="text-4xl sm:text-5xl font-black tracking-tighter text-gradient-dr-brinjal font-space uppercase leading-none px-4">
+              <div className="space-y-4 md:space-y-4 text-center">
+                <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
+                    <h3 className="text-4xl sm:text-4xl md:text-5xl font-black tracking-tighter text-gradient-dr-brinjal font-space uppercase leading-none px-4">
                         Scan Sample
                     </h3>
-                    <div className="h-1 w-16 bg-emerald-500/20 rounded-full group-hover:w-24 transition-all duration-700" />
+                    <div className="h-1.5 w-16 md:w-16 bg-emerald-500/20 rounded-full group-hover:w-24 md:group-hover:w-24 transition-all duration-700" />
                 </div>
-                <p className="text-slate-400 font-black max-w-[280px] leading-relaxed mx-auto text-[8px] uppercase tracking-[0.4em] opacity-40 font-space text-center">
+                <p className="text-slate-400 font-black max-w-[250px] md:max-w-[280px] leading-relaxed mx-auto text-[8px] md:text-[8px] uppercase tracking-[0.3em] md:tracking-[0.4em] opacity-40 font-space text-center">
                     Direct Camera Uplink <span className="text-white/40">or</span> Gallery Import 
                 </p>
               </div>
 
               {/* ACTION BUTTON GRID */}
-              <div className="flex flex-col w-full gap-4 items-center">
+              <div className="flex flex-col w-full gap-4 md:gap-4 items-center px-4">
                 <button
                     onClick={startScanner}
-                    className="w-64 bg-white/5 backdrop-blur-2xl text-white hover:bg-emerald-500 hover:text-white rounded-full py-3.5 px-6 text-base font-black shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all active:scale-95 group/btn overflow-hidden relative border border-white/20 flex items-center justify-center gap-3"
+                    className="w-full max-w-[280px] md:w-64 bg-white/5 backdrop-blur-2xl text-white hover:bg-emerald-500 hover:text-white rounded-full py-4 md:py-3.5 px-6 text-sm md:text-base font-black shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all active:scale-95 group/btn overflow-hidden relative border border-white/20 flex items-center justify-center gap-3 md:gap-3"
                 >
-                    <Activity className="h-5 w-5 animate-pulse text-emerald-400 group-hover:text-white" />
-                    <span className="font-space text-base tracking-tight uppercase">Live Camera</span>
+                    <Activity className="h-5 w-5 md:h-5 md:w-5 animate-pulse text-emerald-400 group-hover:text-white" />
+                    <span className="font-space text-sm md:text-base tracking-tight uppercase">Live Camera</span>
                     <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite]" />
                 </button>
                 <button
                     onClick={() => fileInputRef.current.click()}
-                    className="w-64 bg-white/5 backdrop-blur-2xl text-white hover:bg-purple-500 hover:text-white rounded-full py-3.5 px-6 text-base font-black shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all active:scale-95 group/btn overflow-hidden relative border border-white/20 flex items-center justify-center gap-3"
+                    className="w-full max-w-[280px] md:w-64 bg-white/5 backdrop-blur-2xl text-white hover:bg-purple-500 hover:text-white rounded-full py-4 md:py-3.5 px-6 text-sm md:text-base font-black shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all active:scale-95 group/btn overflow-hidden relative border border-white/20 flex items-center justify-center gap-3 md:gap-3"
                 >
-                    <Camera className="h-5 w-5 text-purple-400 group-hover:text-white" />
-                    <span className="font-space text-base tracking-tight uppercase">Upload File</span>
+                    <Camera className="h-5 w-5 md:h-5 md:w-5 text-purple-400 group-hover:text-white" />
+                    <span className="font-space text-sm md:text-base tracking-tight uppercase">Upload File</span>
                     <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite]" />
                 </button>
               </div>
@@ -298,7 +298,7 @@ export default function UploadZone({ onUpload }) {
             key="preview-zone"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="group relative rounded-[3.5rem] overflow-hidden min-h-[420px] glass-panel border-[12px] border-midnight shadow-[0_80px_100px_-50px_rgba(0,0,0,0.8)]"
+            className="group relative rounded-[3rem] md:rounded-[3.5rem] overflow-hidden min-h-[350px] md:min-h-[420px] glass-panel border-[8px] md:border-[12px] border-midnight shadow-[0_80px_100px_-50px_rgba(0,0,0,0.8)]"
           >
             <motion.img 
               layoutId="shared-photo"
